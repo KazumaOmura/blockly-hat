@@ -1,0 +1,26 @@
+●基本
+// 以下の領域内にブロックを記述することでブロックが表示される。
+<xml id="toolbox" style="display: none"></xml>
+
+// カテゴリー
+・nameに記述した文字列がブラウザ上に表示される。
+・colourの数値によって色分けができる。
+<category name="カテゴリー名" colour="0"></category>
+
+// blockの記述方法 
+・typeに「Blockly.Blocks」で定義した関数名記述する。
+<block type="reduce"></block>
+
+●応用
+//あらかじめ定義したブロック同士を繋げた状態で表示させる方法
+・ブロックの記述方法は基本で記載している通り。
+・「function」ブロックのnameが「arg」に指定されている箇所に「print」ブロックを繋げたい場合
+※定義したブロックの引数がある限り、個数の制限はない。
+<block type="function">
+    <value name="arg">
+      <block type="print"></block>
+    </value>
+</block>
+
+
+
