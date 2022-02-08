@@ -1311,7 +1311,7 @@
 			startCode: function(path, code, command){
 				// testList( );
 				if(animationID) window.cancelAnimationFrame(animationID);
-				resetCanvas();
+				// resetCanvas();
 				TaskQ=[ ];
 				/*
 				var caller=__STACK__[1];

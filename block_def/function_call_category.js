@@ -1,36 +1,3 @@
-Blockly.Blocks.sample = {
-    init: function () {
-        this.jsonInit({
-            type: "block_type",
-            message0: "hoge %1 hoge2 %2",
-            args0: [{
-                type: "input_value",
-                name: "VALUE", // 入れ子にする場合、name要素はVALUEにしなければならない
-                check: "String"
-            }, {
-                type: "input_value",
-                name: "VALUE2",
-                check: "String"
-            }],
-
-            // inputsInline: !0,
-            colour: 250,
-            mutator: "controls_if_mutator"
-        });
-    },
-};
-
-
-
-
-
-
-
-
-
-
-
-
 //関数呼び出し
 Blockly.Blocks.call_func = {
     /**
@@ -178,7 +145,7 @@ Blockly.Blocks.return = {
     init() {
         this.jsonInit({
             type: "print",
-            message0: "return %1 ",
+            message0: "return %1",
             args0: [{
                 type: "field_input",
                 name: "return",
@@ -194,7 +161,7 @@ Blockly.Blocks.return = {
 };
 Blockly.Hat.return = function (block) {
     const return_elem = block.getFieldValue('return');
-    return return_elem;
+    return "return " + return_elem;
 };
 
 
@@ -340,30 +307,10 @@ Blockly.Blocks.arg = {
             type: "block_type",
             message0: "%1 ⇦ %2",
             args0: [{
-                    // type: "field_variable",
-                    type: "field_dropdown",
-                    name: "arg_name",
-                    // variable: "%{BKY_VARIABLES_DEFAULT_NAME}",
-                    // variableTypes: ["Recursive"],
-                    options: [
-                        [
-                            "a",
-                            "1"
-                        ],
-                        [
-                            "b",
-                            "2"
-                        ],
-                        [
-                            "c",
-                            "3"
-                        ],
-                        [
-                            "d",
-                            "4"
-                        ]
-                    ]
-                },
+                type: "field_input",
+                name: "string",
+                text: "",
+              },
                 {
                     type: "input_value",
                     name: "arg_elem",
@@ -379,25 +326,11 @@ Blockly.Blocks.arg = {
 };
 
 Blockly.Hat.arg = function (block) {
-    const post_arg_name = block.getFieldValue('arg_name');
-    if (post_arg_name == 1) {
-        var arg_name = "a";
-    } else if (post_arg_name == 2) {
-        var arg_name = "b";
-    } else if (post_arg_name == 3) {
-        var arg_name = "c";
-    } else if (post_arg_name == 4) {
-        var arg_name = "d";
-    } else {
-        var arg_name = "?";
-    }
-    const arg = Blockly.Hat.valueToCode(block, 'arg_elem', Blockly.Hat.ORDER_FUNCTION_CALL);
-
-    let OPERATOR = arg;
-    OPERATOR += " ^(";
-    OPERATOR += arg_name;
-    OPERATOR += ").";
-    return OPERATOR;
+    let text_num = block.getFieldValue('string') + ".";
+    const arg = Blockly.Hat.statementToCode(block, 'arg_elem', Blockly.Hat.ORDER_FUNCTION_CALL);
+    if(arg != "")
+        text_num = arg + "."
+    return text_num;
 };
 
 
@@ -494,7 +427,6 @@ Blockly.Hat.call_func_andarg = function (block) {
     OPERATOR += func_name;
     OPERATOR += " ^(";
     OPERATOR += temporary_num
-    OPERATOR += "."
     return OPERATOR;
 };
 
@@ -618,7 +550,7 @@ Blockly.Blocks.call_def_func = {
                 },
                 {
                     type: "field_input",
-                    name: "return",
+                    name: "yield",
                     text: ""
                 }
             ],
@@ -633,9 +565,12 @@ Blockly.Blocks.call_def_func = {
 };
 
 Blockly.Hat.call_def_func = function (block) {
+    let period = "";
     const call = Blockly.Hat.statementToCode(block, 'call', Blockly.Hat.ORDER_FUNCTION_CALL);
     const order_return = Blockly.Hat.statementToCode(block, 'return', Blockly.Hat.ORDER_FUNCTION_CALL);
-    return call + order_return + ")";
+    if (order_return != "")
+        period = ".";
+    return call + period + order_return + ")";
 };
 
 

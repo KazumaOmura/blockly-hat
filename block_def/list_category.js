@@ -46,7 +46,7 @@ Blockly.Hat.createlist = function (block) {
     OPERATOR += second_node
     OPERATOR += ") "
     OPERATOR += first_node
-    OPERATOR += " ^($"
+    OPERATOR += " ^("
     OPERATOR += list_name
     OPERATOR += ")"
     OPERATOR += "\n"
@@ -99,11 +99,11 @@ Blockly.Hat.add_headlist_node = function (block) {
     const list_name = block.getFieldValue('list_name');
     const node = Blockly.Hat.valueToCode(block, 'node', Blockly.Hat.ORDER_FUNCTION_CALL);
 
-    let OPERATOR = "list_push $"
+    let OPERATOR = "list_push "
     OPERATOR += list_name
     OPERATOR += " "
     OPERATOR += node
-    OPERATOR += " ^($"
+    OPERATOR += " ^("
     OPERATOR += list_name
     OPERATOR += ")"
     OPERATOR += "\n"
@@ -173,7 +173,7 @@ Blockly.Blocks.list_print = {
 Blockly.Hat.list_print = function (block) {
     const list_name = block.getFieldValue('list_name');
     
-    let OPERATOR = "print( $"
+    let OPERATOR = "print( "
     OPERATOR += list_name
     OPERATOR += " \"\\n\")^()"
     OPERATOR += "\n"
@@ -208,7 +208,7 @@ Blockly.Blocks.list_variable = {
 Blockly.Hat.list_variable = function (block) {
     const list_name = block.getFieldValue('list_name');
     
-    let OPERATOR = "$"
+    let OPERATOR = ""
     OPERATOR += list_name
     OPERATOR += "."
     return OPERATOR;
@@ -295,7 +295,7 @@ Blockly.Blocks.get_list_headnode = {
             type: "field_input",
             name: "list_variable_name",
             text: "variable_name"
-        },
+        }
         ],
         previousStatement: null,
         nextStatement: null,
@@ -309,7 +309,7 @@ Blockly.Blocks.get_list_headnode = {
   Blockly.Hat.get_list_headnode = function (block) {
     const list_name = block.getFieldValue('list_name');
     const list_variable_name = block.getFieldValue('list_variable_name');
-    let OPERATOR = "list_get_first $"
+    let OPERATOR = "list_get_first "
     OPERATOR += list_name
     OPERATOR += " ^("
     OPERATOR += list_variable_name
@@ -326,12 +326,16 @@ Blockly.Blocks.get_list_Second_and_subsequent = {
     init() {
       this.jsonInit({
         type: "block_type",
-        // message0: "リスト: %1 の2番目以降の要素からなるリストを変数 %2 に代入",
-        message0: "リスト: %1 の2番目以降の要素からなるリストに更新",
+        message0: "リスト: %1 の2番目以降の要素からなるリストを変数 %2 に代入",
         args0: [{
             type: "field_input",
             name: "list_name",
             text: "list_name"
+        },
+        {
+            type: "field_input",
+            name: "list_rest_name",
+            text: "rest"
         },
         // {
         //     type: "field_input",
@@ -350,12 +354,11 @@ Blockly.Blocks.get_list_Second_and_subsequent = {
   
   Blockly.Hat.get_list_Second_and_subsequent = function (block) {
     const list_name = block.getFieldValue('list_name');
-    // const list_variable_name = block.getFieldValue('list_variable_name');
-    let OPERATOR = "list_get_rest $"
+    const list_rest_name = block.getFieldValue('list_rest_name');
+    let OPERATOR = "list_get_rest "
     OPERATOR += list_name
-    OPERATOR += " ^($"
-    // OPERATOR += list_variable_name
-    OPERATOR += list_name;
+    OPERATOR += " ^("
+    OPERATOR += list_rest_name
     OPERATOR += ")\n"
     return OPERATOR
   };
@@ -389,7 +392,7 @@ Blockly.Blocks.list_null_check = {
   
   Blockly.Hat.list_null_check = function (block) {
     const list_name = block.getFieldValue('list_name');
-    let OPERATOR = "list_empty? $"
+    let OPERATOR = "list_empty? "
     OPERATOR += list_name
     OPERATOR += "\n"
     return OPERATOR

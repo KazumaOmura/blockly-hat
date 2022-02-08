@@ -21,11 +21,7 @@
   <h2>関数定義エリア</h2>
   <div id="blocklyDiv_function"></div>
   <xml id="toolbox_main" style="display: none">
-    <category name="関数定義" colour="200">
-      <block type="Recursive_func"></block>
-    </category>
     <category name="標準" colour="0">
-      <block type="sample_hoge"></block>
       <block type="string"></block>
       <block type="num"></block>
       <block type="num_statement"></block>
@@ -95,41 +91,52 @@
 
 
     <category name="関数呼び出し" colour="250">
-      <block type="call_func"></block>
-      <block type="return"></block>
-      <block type="list_variable"></block>
-      <block type="Formal_arg_str"></block>
-      <block type="Formal_arg_num"></block>
-      <block type="arg_str"></block>
-      <block type="arg_num"></block>
+      <block type="call_def_func2">
+        <value name="call">
+          <block type="call_func_andarg2">
+            <value name="arg">
+              <block type="arg">
+                <value name="arg_elem">
+                  <block type="num">
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="arg">
+              <block type="arg">
+                <value name="arg_elem">
+                  <block type="num">
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="return">
+          <block type="num2">
+          </block>
+        </value>
+      </block>
+      <block type="num2"></block>
       <block type="arg"></block>
       <block type="sample_arg2"></block>
-      <block type="call_func_andarg"></block>
-      <block type="call_func4"></block>
-      <block type="Variable_def"></block>
-      <block type="variables_set_number2"></block>
-      <block type="variables_get_number"></block>
-      <block type="variables_get_number2"></block>
+      <block type="return"></block>
+      <block type="list_variable"></block>
     </category>
 
     <category name="その他" colour="350">
       <block type="text"></block>
-      <block type="controls_repeat"></block>
-      <block type="text_print"></block>
-      <block type="prime_factorization"></block>
     </category>
   </xml>
   <xml id="toolbox_function" style="display: none">
     <category name="標準" colour="0">
-      <block type="sample_hoge"></block>
       <block type="string"></block>
       <block type="num"></block>
       <block type="num2"></block>
       <block type="num_statement"></block>
       <block type="print"></block>
       <block type="logic_compare"></block>  
-      <block type="operator"></block>  
-      <block type="list_variable"></block>
+      <block type="operator"></block> 
     </category>
 
     <category name="分岐" colour="150">
@@ -166,17 +173,25 @@
             <value name="call">
               <block type="call_func_andarg">
                 <value name="arg">
-                  <block type="Formal_arg_num">
+                  <block type="arg">
+                    <value name="arg_elem">
+                      <block type="num">
+                      </block>
+                    </value>
                   </block>
                 </value>
                 <value name="arg">
-                  <block type="Formal_arg_num">
+                  <block type="arg">
+                    <value name="arg_elem">
+                      <block type="num">
+                      </block>
+                    </value>
                   </block>
                 </value>
               </block>
             </value>
             <value name="return">
-              <block type="return">
+              <block type="num2">
               </block>
             </value>
           </block>
@@ -186,7 +201,9 @@
             <value name="if_conditions">
               <block type="list_null_check"></block>
             </value>
-            
+            <value name="if">
+              <block type="return"></block>
+            </value>
             <value name="else">
               <block type="get_list_headnode"></block>
             </value>
@@ -194,23 +211,79 @@
         </value>
       </block>
       <!-- reduce ここまで -->
+      <block type="call_def_func2">
+        <value name="call">
+          <block type="call_func_andarg2">
+            <value name="arg">
+              <block type="arg">
+                <value name="arg_elem">
+                  <block type="num">
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="arg">
+              <block type="arg">
+                <value name="arg_elem">
+                  <block type="num">
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="return">
+          <block type="num2">
+          </block>
+        </value>
+      </block>
     </category>
 
     <category name="関数定義" colour="200">
-      <block type="call_func"></block>
-      <block type="Recursive_call"></block>
-      <block type="Recursive_func"></block>
-      <block type="variables_set_number"></block>
+      <!-- <block type="call_func"></block>
+      <block type="Recursive_call"></block> -->
+      <!-- <block type="Recursive_func"></block>
+      <block type="variables_set_number"></block> -->
       <block type="def_func"></block>
+      <block type="call_def_func"></block>
+      <block type="call_func_andarg"></block>
+      <block type="arg"></block>
+      <block type="num2"></block>
+      <block type="return"></block>
     </category>
 
     <category name="関数呼び出し" colour="250">
+      <block type="call_def_func2">
+        <value name="call">
+          <block type="call_func_andarg2">
+            <value name="arg">
+              <block type="arg">
+                <value name="arg_elem">
+                  <block type="num">
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="arg">
+              <block type="arg">
+                <value name="arg_elem">
+                  <block type="num">
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="return">
+          <block type="num2">
+          </block>
+        </value>
+      </block>
+      <block type="num2"></block>
+      <block type="arg"></block>
+      <block type="sample_arg2"></block>
       <block type="return"></block>
       <block type="list_variable"></block>
-      <block type="Formal_arg_str"></block>
-      <block type="Formal_arg_num"></block>
-      <block type="arg_str"></block>
-      <block type="arg_num"></block>
     </category>
 
     <category name="変数" colour="300" custom="VARIABLE"></category>
@@ -230,7 +303,7 @@
     </div>
     <div class="hat_output_area">
       <h2>Hat出力エリア</h2>
-      <textarea class="outputcode" id="terminal"></textarea>
+      <textarea style="font-size:24px;" class="outputcode" id="terminal"></textarea>
     </div>
   </div>
 
@@ -267,6 +340,7 @@
 <script src="block_def/if_category.js"></script>
 <script src="block_def/function_def_category.js"></script>
 <script src="block_def/function_call_category.js"></script>
+<script src="block_def/trash.js"></script>
 
 <!-- カテゴリーカスタムファイル -->
 <!-- <script src="CategoryCallback/workspace.js"></script> -->

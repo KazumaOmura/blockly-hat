@@ -97,7 +97,7 @@ Blockly.Hat.if_else = function (block) {
     const if_order = Blockly.Hat.statementToCode(block, 'if', Blockly.Hat.ORDER_FUNCTION_CALL);
     const else_order = Blockly.Hat.statementToCode(block, 'else', Blockly.Hat.ORDER_FUNCTION_CALL);
 
-    return  "if" + if_conditions + " " + if_order + "\n" + "(" + "\n" + else_order + ")";
+    return  "if" + "(" + if_conditions + ")\n(\n" + if_order + ")\n(\n" + else_order + "\n)";
 };
 
 
