@@ -22,14 +22,19 @@
   <div id="blocklyDiv_function"></div>
   <xml id="toolbox_main" style="display: none">
     <category name="標準" colour="0">
+      <block type="substitution"></block> 
       <block type="string"></block>
       <block type="num"></block>
       <block type="num_statement"></block>
       <block type="num2"></block>
       <block type="num2_statement"></block>
-      <block type="print"></block>
-      <block type="logic_compare"></block>  
+      <block type="print"></block> 
       <block type="operator"></block>  
+      <block type="increment_operator">
+        <value name="arg_name">
+          <block type="num"></block>
+        </value>
+      </block>
     </category>
 
     <category name="リスト" colour="15">
@@ -59,25 +64,40 @@
       <block type="arrangement_name"></block>
     </category>
 
-    <category name="配列変数" colour="35" custom="arrangement_VARIABLE">
-    </category>
-
     <category name="繰り返し" colour="150">
-      <block type="repeat"></block>
-      <block type="roop_if_break"></block>
+      <block type="loop"></block>
+      <block type="condition_loop">
+        <value name="arg">
+          <block type="arg"></block>
+        </value>
+        <value name="if_conditions">
+          <block type="arg_compare">
+            <value name="left_side">
+              <block type="num"></block>
+            </value>
+            <value name="right_side">
+              <block type="num"></block>
+            </value>
+          </block>
+        </value>
+        <value name="do">
+          <block type="increment_operator">
+            <value name="arg_name">
+              <block type="num"></block>
+            </value>
+          </block>
+        </value>
+      </block>
+      <block type="loop_if_break"></block>
     </category>
 
     <category name="計算" colour="100">
-      <block type="calc"></block>
       <block type="add"></block>
       <block type="num2_statement"></block>
     </category>
 
     <category name="分岐" colour="150">
-      <block type="controls_if"></block>
-      <block type="controls_if3"></block>
-      <block type="controls_if_else"></block>
-      <block type="controls_if2"></block>
+      <block type="if_else"></block>
     </category>
 
     <category name="変数" colour="300" custom="VARIABLE"></category>
@@ -126,6 +146,11 @@
 
     <category name="その他" colour="350">
       <block type="text"></block>
+      <block type="calc"></block>
+      <block type="controls_if"></block>
+      <block type="controls_if_else"></block>
+      <block type="controls_if2"></block>
+      <block type="controls_if3"></block>
     </category>
   </xml>
   <xml id="toolbox_function" style="display: none">
@@ -135,14 +160,11 @@
       <block type="num2"></block>
       <block type="num_statement"></block>
       <block type="print"></block>
-      <block type="logic_compare"></block>  
       <block type="operator"></block> 
     </category>
 
     <category name="分岐" colour="150">
       <block type="if_else"></block>
-      <block type="controls_if3"></block>
-      <block type="controls_if2"></block>
     </category>
 
     <category name="リスト" colour="15">
@@ -160,7 +182,6 @@
     </category>
 
     <category name="計算" colour="100">
-      <block type="calc"></block>
       <block type="add"></block>
       <block type="num2_statement"></block>
     </category>
@@ -335,7 +356,7 @@
 <script src="block_def/standard_category.js"></script>
 <script src="block_def/list_category.js"></script>
 <script src="block_def/arrangement_category.js"></script>
-<script src="block_def/roop_category.js"></script>
+<script src="block_def/loop_category.js"></script>
 <script src="block_def/calc_category.js"></script>
 <script src="block_def/if_category.js"></script>
 <script src="block_def/function_def_category.js"></script>
