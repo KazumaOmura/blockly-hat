@@ -1,3 +1,5 @@
+//このファイルはHat言語出力の際にJSエラーが吐かれていたので対策用に外部からDLして追加したファイルです
+
 // by K. Shima
 // module.exports = (function() {
 var f=(function() {

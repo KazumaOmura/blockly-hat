@@ -1,3 +1,6 @@
+//作成、変更ファイル
+//リストブロックの定義
+
 // リストの初期状態を定義
 Blockly.Blocks.createlist = {
     init() {
@@ -213,62 +216,6 @@ Blockly.Hat.list_variable = function (block) {
     OPERATOR += "."
     return OPERATOR;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

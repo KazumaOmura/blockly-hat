@@ -1,5 +1,7 @@
+//作成、変更ファイル
+
 workspace.registerButtonCallback ("createListVariableButtonPressed", () => {
-    const name = window.prompt ("配列変数の作成");
+    const name = window.prompt ("配列作成");
     if (name && name !== "") {
         workspace.createVariable (name, "List");
     }

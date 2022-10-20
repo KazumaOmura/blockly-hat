@@ -1,3 +1,5 @@
+//作成、変更ファイル
+
 //文字列(クォーテーションあり)
 Blockly.Blocks.string = {
   /**
@@ -109,7 +111,7 @@ Blockly.Blocks.num2 = {
 
 Blockly.Hat.num2 = function (block) {
   const num = block.getFieldValue('num');
-  return num
+  return num + " ";
 };
 
 // 数値2 ステートメント

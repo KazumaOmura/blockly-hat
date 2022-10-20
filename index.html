@@ -1,13 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <title>Blockly - Hat</title>
+  <!--大村css-->
   <link rel="stylesheet" media="all" href="./style.css">
+  <!--オセロcss
+  <link rel="stylesheet" href="style.css">-->
   <script src='https://cdn.jsdelivr.net/npm/store-js@2.0.4/dist/store.legacy.min.js'></script>
   <!-- <script src="hat.js"></script> -->
   <!-- <script src="bundle.js"></script> -->
+  <style>
+    .modal { /* covers the main window */
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      z-index: 90;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+    }
+    .modalWindow {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border-radius: 8px;
+      padding: 10px 20px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    }
+    .modalFooter {
+      text-align: right;  /* cancel button at the right corner */
+    }
+    .modalWindow ul {
+      list-style: none;  /* no bullet */
+    }
+    .modalWindow a {
+      text-decoration: none;  /* no underline */
+      cursor: pointer;  /* pointer even for anchors without href */
+      color: #48f;
+    }
+  </style>
 </head>
 
 <body>
@@ -16,11 +57,14 @@
 	<textarea id="text_hoge" class="lined" cols="40" rows="6" spellcheck="false"></textarea> -->
 
   <div id="blockly">
-    <h2>main定義エリア</h2>
+    <h1>main定義エリア</h1>
   <div id="blocklyDiv"></div>
-  <h2>関数定義エリア</h2>
+  <h1>関数定義エリア</h1>
   <div id="blocklyDiv_function"></div>
+
+  <!--main定義エリア-->
   <xml id="toolbox_main" style="display: none">
+    <!--標準ここから-->
     <category name="標準" colour="0">
       <block type="substitution"></block> 
       <block type="string"></block>
@@ -36,7 +80,9 @@
         </value>
       </block>
     </category>
+    <!--ここまで-->
 
+    <!--リスト-->
     <category name="リスト" colour="15">
       <block type="createlist"></block>
 
@@ -52,7 +98,9 @@
       <block type="list_print"></block>
       <block type="list_variable"></block>
     </category>
+    <!--ここまで-->
 
+    <!--配列-->
     <category name="配列" colour="25">
       <block type="arrangement">
         <value name="element">
@@ -63,7 +111,9 @@
       <block type="arrangement_element_print"></block>
       <block type="arrangement_name"></block>
     </category>
+    <!--ここまで-->
 
+    <!--繰り返し-->
     <category name="繰り返し" colour="150">
       <block type="loop"></block>
       <block type="condition_loop">
@@ -90,18 +140,24 @@
       </block>
       <block type="loop_if_break"></block>
     </category>
+    <!--ここまで-->
 
+    <!--計算-->
     <category name="計算" colour="100">
       <block type="add"></block>
       <block type="num2_statement"></block>
     </category>
+    <!--ここまで-->
 
+    <!--分岐-->
     <category name="分岐" colour="150">
       <block type="if_else"></block>
+      <block type="arg_compare"></block>
     </category>
+    <!--ここまで-->
 
+    
     <category name="変数" colour="300" custom="VARIABLE"></category>
-
     <!-- <category name="関数定義" colour="330" custom="NUMBER_VARIABLE"></category> -->
     <!-- <category name="関数定義" colour="330">
       <block type="variables_set_number"></block>
@@ -109,7 +165,7 @@
       <block type="variables_get_number2"></block>
     </category> -->
 
-
+    <!--関数呼び出し-->
     <category name="関数呼び出し" colour="250">
       <block type="call_def_func2">
         <value name="call">
@@ -132,10 +188,6 @@
             </value>
           </block>
         </value>
-        <value name="return">
-          <block type="num2">
-          </block>
-        </value>
       </block>
       <block type="num2"></block>
       <block type="arg"></block>
@@ -143,7 +195,9 @@
       <block type="return"></block>
       <block type="list_variable"></block>
     </category>
+    <!--ここまで-->
 
+    <!--その他-->
     <category name="その他" colour="350">
       <block type="text"></block>
       <block type="calc"></block>
@@ -152,8 +206,13 @@
       <block type="controls_if2"></block>
       <block type="controls_if3"></block>
     </category>
-  </xml>
+    <!--ここまで-->
+
+  </xml><!--main定義エリアここまで-->
+
+  <!--関数定義エリアここから-->
   <xml id="toolbox_function" style="display: none">
+    <!--標準-->
     <category name="標準" colour="0">
       <block type="string"></block>
       <block type="num"></block>
@@ -161,12 +220,16 @@
       <block type="num_statement"></block>
       <block type="print"></block>
       <block type="operator"></block> 
-    </category>
+    </category><!--ここまで-->
 
+    <!--分岐-->
     <category name="分岐" colour="150">
       <block type="if_else"></block>
+      <block type="arg_compare"></block>
     </category>
+    <!--ここまで-->
 
+    <!--リスト-->
     <category name="リスト" colour="15">
       <block type="add_headlist_node">
         <value name="node">
@@ -179,13 +242,15 @@
       <block type="list_null_check"></block>
       <block type="list_print"></block>
       <block type="list_variable"></block>
-    </category>
+    </category><!--ここまで-->
 
+    <!--計算-->
     <category name="計算" colour="100">
       <block type="add"></block>
       <block type="num2_statement"></block>
-    </category>
+    </category><!--ここまで-->
 
+    <!--組み立て済み-->
     <category name="組み立て済み" colour="50">
       <!-- reduce ここから -->
       <block type="def_func">
@@ -258,8 +323,9 @@
           </block>
         </value>
       </block>
-    </category>
+    </category><!--ここまで-->
 
+    <!--関数定義-->
     <category name="関数定義" colour="200">
       <!-- <block type="call_func"></block>
       <block type="Recursive_call"></block> -->
@@ -271,8 +337,9 @@
       <block type="arg"></block>
       <block type="num2"></block>
       <block type="return"></block>
-    </category>
+    </category><!--ここまで-->
 
+    <!--関数呼び出し-->
     <category name="関数呼び出し" colour="250">
       <block type="call_def_func2">
         <value name="call">
@@ -295,44 +362,142 @@
             </value>
           </block>
         </value>
-        <value name="return">
-          <block type="num2">
-          </block>
-        </value>
       </block>
       <block type="num2"></block>
       <block type="arg"></block>
       <block type="sample_arg2"></block>
       <block type="return"></block>
       <block type="list_variable"></block>
-    </category>
+    </category><!--ここまで-->
 
+    <!--変数-->
     <category name="変数" colour="300" custom="VARIABLE"></category>
-  </xml>
+
+  </xml><!--関数定義エリアここまで-->
   </div>
 
   <div id="code_area">
     <!-- <div class="js_area">
-      <h2>JavaScript</h2>
+      <h1>JavaScript</h1>
       <pre id='jsCode'>
 
       </pre>
     </div> -->
     <div class="hat_area">
-      <h2>Hatコード</h2>
+      <h1>Hatコード</h1>
       <textarea class="outputcode" id="HatCode"></textarea>
     </div>
     <div class="hat_output_area">
-      <h2>Hat出力エリア</h2>
+      <h1>Hat出力エリア</h1>
       <textarea style="font-size:24px;" class="outputcode" id="terminal"></textarea>
     </div>
   </div>
 
+  <!--全消去初期化-->
+  <xml id="clearBlocks" style="display: none"></xml>
+<!-- ボタン -->
   <div id="btn_area">
     <button id="showCode">ソースコードを表示する</button>
     <button id="runCode">コードを実行する</button>
+    <button onclick="saveBlocks()"    id="saveButton"   >保存</button>
+    <button onclick="restoreBlocks()" id="restoreButton">復元</button> &nbsp;&nbsp;
+    <button onclick="clearBlocks()"   id="clearButton"  >全消去</button>
   </div>
 
+  <div id="restoreModal" class="modal" onclick="pressCancelRestoreBlocks(event)">
+    <div class="modalWindow" style="width: 480px">
+      <div class="modalHeader">
+        保存済プログラム
+      </div>
+      <ul id="restoreList">
+      </ul>
+      <div class="modalFooter">
+        <a onclick="cancelRestoreBlocks()">キャンセル</a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <main>
+    <!--<div id="modal">
+        <h2>オセロ</h2>
+            <p>マスの数を選択してください</p>
+            <div id="menu">
+                <p id="4" class="select">4x4</p>
+                <p id="6" class="select">6x6</p>
+                <p id="8" class="select">8x8</p>
+            </div>
+    </div><-->
+    <div id="restartBtn" class="hide">クリックするとスタート画面に戻ります</div>
+    <div id="content">
+
+        <table id="board"></table>
+    </div>
+    <div id="counter" class="hide">
+        <div id="numBlack"></div>
+        <h2></h2>
+        <div id="numWhite"></div>
+    </div>
+    <button onclick="boardnum(4)"    id="boardn"   >4*4</button>
+    <button onclick="boardnum(6)"    id="boardn"   >6*6</button>
+    <button onclick="boardnum(8)"    id="boardn"   >8*8</button>
+    <button id="test">テスト</button>
+</main>
 </body>
 
 </html>
@@ -343,6 +508,7 @@
 <script src="lib/google-blockly/blocks_compressed.js"></script>
 <script src="lib/google-blockly/javascript_compressed.js"></script>
 <script src="lib/google-blockly/hat_compressed.js"></script>
+<script src="lib/google-blockly/variable_creation.js"></script>
 <script src="lib/google-blockly/msg/js/ja.js"></script>
 <script src="custom_block.js"></script>
 
@@ -351,6 +517,9 @@
 <script src="index.js"></script>
 <script src="sexpr-plus.js"></script>
 <script src="hat.js"></script>
+
+<!--オセロ-->
+<script src="othello.js"></script>
 
 <!-- 作成したブロック定義ファイル -->
 <script src="block_def/standard_category.js"></script>
@@ -361,8 +530,8 @@
 <script src="block_def/if_category.js"></script>
 <script src="block_def/function_def_category.js"></script>
 <script src="block_def/function_call_category.js"></script>
-<script src="block_def/trash.js"></script>
-
+<script src="block_def/call_func.js"></script>
+<script src="block_def/save.js"></script>
 <!-- カテゴリーカスタムファイル -->
 <!-- <script src="CategoryCallback/workspace.js"></script> -->
 

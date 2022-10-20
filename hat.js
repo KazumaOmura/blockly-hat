@@ -1,3 +1,5 @@
+//作成、変更ファイル
+
 // const HatInterpreter=(function( ){
 	var HatInterpreter=(function( ){
 		/** デバッグ用 **/

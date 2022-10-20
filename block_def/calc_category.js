@@ -1,3 +1,4 @@
+//作成、変更ファイル
 // 演算
 Blockly.Blocks.calc = {
   /**
@@ -151,6 +152,7 @@ Blockly.Hat.add = function (block) {
     var code = "?";
   }
   const arg = Blockly.Hat.statementToCode(block, 'arg', Blockly.Hat.ORDER_FUNCTION_CALL);
+  console.log(arg);
 
   // 数値の長さを判定し、配列に分割した後にHat形式で出力
   const nums = arg.split('.');

@@ -1,3 +1,4 @@
+//作成、変更ファイル
 // 再帰(内部)関数
 Blockly.Blocks.Recursive_func = {
     /**

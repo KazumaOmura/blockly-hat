@@ -1,3 +1,5 @@
+//作成、変更ファイル
+
 // 関数の呼び出し
 Blockly.Blocks.call_def_func2 = {
     init() {

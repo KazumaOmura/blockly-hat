@@ -1,3 +1,4 @@
+//作成、変更ファイル
 // 比較演算子
 Blockly.Blocks.arg_compare = {
     init() {
@@ -51,14 +52,18 @@ Blockly.Blocks.arg_compare = {
   };
   
   Blockly.Hat.arg_compare = function (block) {
-    const left_side = Blockly.Hat.valueToCode(block, 'left_side', Blockly.Hat.ORDER_FUNCTION_CALL);
+    const left_side = Blockly.Hat.statementToCode(block, 'left_side', Blockly.Hat.ORDER_FUNCTION_CALL);
     const operator = block.getFieldValue('operator');
-    const right_side = Blockly.Hat.valueToCode(block, 'right_side', Blockly.Hat.ORDER_FUNCTION_CALL);
+    const right_side = Blockly.Hat.statementToCode(block, 'right_side', Blockly.Hat.ORDER_FUNCTION_CALL);
   
     return left_side + " " + operator + " " + right_side;
   
   };
   
+  //Blockly.Hat.variables_set = function (a) {
+  //  var b = Blockly.Hat.statementToCode(a, "VALUE", Blockly.Hat.ORDER_FUNCTION_CALL) || "0";
+  //  return b + " " + "^" + "(" + Blockly.Hat.variableDB_.getName(a.getFieldValue("VAR"), Blockly.Variables.NAME_TYPE) + ")\n";
+  //};
 
 //繰り返し
 Blockly.Blocks.loop = {

@@ -1,4 +1,6 @@
-// // 分岐(if)
+//作成、変更ファイル
+
+/// 分岐(if)
 // Blockly.Blocks.controls_if = {
 //     /**
 //      * Block for shuffle characters.

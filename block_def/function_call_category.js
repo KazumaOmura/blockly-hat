@@ -1,3 +1,4 @@
+//作成、変更ファイル
 //関数呼び出し
 Blockly.Blocks.call_func = {
     /**
@@ -39,7 +40,6 @@ Blockly.Hat.call_func = function (block) {
     const func_name = block.getFieldValue('func_name');
     const arg = Blockly.Hat.statementToCode(block, 'arg', Blockly.Hat.ORDER_FUNCTION_CALL);
     const return_arg = Blockly.Hat.statementToCode(block, 'return_arg', Blockly.Hat.ORDER_FUNCTION_CALL);
-
     // 数値の長さを判定し、配列に分割した後にHat形式で出力
     const nums = arg.split('.');
     const nums_length = nums.length

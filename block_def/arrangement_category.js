@@ -1,5 +1,7 @@
+//作成、変更ファイル
 // 配列定義
 Blockly.Blocks.arrangement = {
+    //初期化
     init() {
         this.jsonInit({
             type: "arrangements_repeat",
@@ -34,7 +36,7 @@ Blockly.Blocks.arrangement = {
                             "2"
                         ],
                         [
-                            "浮動小数店",
+                            "浮動小数点",
                             "3"
                         ]
                     ]
@@ -234,16 +236,6 @@ Blockly.Hat.arrangement_name = function (block) {
     const element = block.getFieldValue('element');
     return element;
 }
-
-
-
-
-
-
-
-
-
-
 
 // 配列名
 Blockly.defineBlocksWithJsonArray ([
