@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blockly - Hat</title>
   <!--大村css-->
   <link rel="stylesheet" media="all" href="./style.css">
@@ -13,7 +13,8 @@
   <!-- <script src="hat.js"></script> -->
   <!-- <script src="bundle.js"></script> -->
   <style>
-    .modal { /* covers the main window */
+    .modal {
+      /* covers the main window */
       display: none;
       position: fixed;
       width: 100%;
@@ -22,9 +23,10 @@
       top: 0;
       z-index: 90;
       overflow: auto;
-      background-color: rgb(0,0,0);
-      background-color: rgba(0,0,0,0.4);
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4);
     }
+
     .modalWindow {
       position: fixed;
       top: 50%;
@@ -35,17 +37,24 @@
       background-color: white;
       border-radius: 8px;
       padding: 10px 20px;
-      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     }
+
     .modalFooter {
-      text-align: right;  /* cancel button at the right corner */
+      text-align: right;
+      /* cancel button at the right corner */
     }
+
     .modalWindow ul {
-      list-style: none;  /* no bullet */
+      list-style: none;
+      /* no bullet */
     }
+
     .modalWindow a {
-      text-decoration: none;  /* no underline */
-      cursor: pointer;  /* pointer even for anchors without href */
+      text-decoration: none;
+      /* no underline */
+      cursor: pointer;
+      /* pointer even for anchors without href */
       color: #48f;
     }
   </style>
@@ -53,336 +62,344 @@
 
 <body>
   <!-- <input type="text" value="sample1.sch" disabled /> -->
-	<!-- <input id="input_hoge" type="button" value="Run" onclick="runCode_hat()"/><br>
+  <!-- <input id="input_hoge" type="button" value="Run" onclick="runCode_hat()"/><br>
 	<textarea id="text_hoge" class="lined" cols="40" rows="6" spellcheck="false"></textarea> -->
 
   <div id="blockly">
     <h1>main定義エリア</h1>
-  <div id="blocklyDiv"></div>
-  <h1>関数定義エリア</h1>
-  <div id="blocklyDiv_function"></div>
+    <div id="blocklyDiv"></div>
+    <h1>関数定義エリア</h1>
+    <div id="blocklyDiv_function"></div>
 
-  <!--main定義エリア-->
-  <xml id="toolbox_main" style="display: none">
-    <!--標準ここから-->
-    <category name="標準" colour="0">
-      <block type="substitution"></block> 
-      <block type="string"></block>
-      <block type="num"></block>
-      <block type="num_statement"></block>
-      <block type="num2"></block>
-      <block type="num2_statement"></block>
-      <block type="print"></block> 
-      <block type="operator"></block>  
-      <block type="increment_operator">
-        <value name="arg_name">
-          <block type="num"></block>
-        </value>
-      </block>
-    </category>
-    <!--ここまで-->
+    <!--main定義エリア-->
+    <xml id="toolbox_main" style="display: none">
+      <!--JavaScriptのサンプル ここから-->
+      <category name="JSサンプル" colour="0">
+        <block type="js_sample"></block>
+      </category>
+      <!--JavaScriptのサンプル ここまで-->
 
-    <!--リスト-->
-    <category name="リスト" colour="15">
-      <block type="createlist"></block>
+      <!--標準ここから-->
+      <category name="標準" colour="0">
+        <block type="substitution"></block>
+        <block type="string"></block>
+        <block type="num"></block>
+        <block type="num_statement"></block>
+        <block type="num2"></block>
+        <block type="num2_statement"></block>
+        <block type="print"></block>
+        <block type="operator"></block>
+        <block type="increment_operator">
+          <value name="arg_name">
+            <block type="num"></block>
+          </value>
+        </block>
+      </category>
+      <!--ここまで-->
 
-      <block type="add_headlist_node">
-        <value name="node">
-          <block type="list_element"></block>
-        </value>
-      </block>
+      <!--リスト-->
+      <category name="リスト" colour="15">
+        <block type="createlist"></block>
 
-      <block type="get_list_headnode"></block>
-      <block type="get_list_Second_and_subsequent"></block>
-      <block type="list_null_check"></block>
-      <block type="list_print"></block>
-      <block type="list_variable"></block>
-    </category>
-    <!--ここまで-->
+        <block type="add_headlist_node">
+          <value name="node">
+            <block type="list_element"></block>
+          </value>
+        </block>
 
-    <!--配列-->
-    <category name="配列" colour="25">
-      <block type="arrangement">
-        <value name="element">
-          <block type="arrangement_element"></block>
-        </value>
-      </block>
-      <block type="arrangement_element"></block>
-      <block type="arrangement_element_print"></block>
-      <block type="arrangement_name"></block>
-    </category>
-    <!--ここまで-->
+        <block type="get_list_headnode"></block>
+        <block type="get_list_Second_and_subsequent"></block>
+        <block type="list_null_check"></block>
+        <block type="list_print"></block>
+        <block type="list_variable"></block>
+      </category>
+      <!--ここまで-->
 
-    <!--繰り返し-->
-    <category name="繰り返し" colour="150">
-      <block type="loop"></block>
-      <block type="condition_loop">
-        <value name="arg">
-          <block type="arg"></block>
-        </value>
-        <value name="if_conditions">
-          <block type="arg_compare">
-            <value name="left_side">
-              <block type="num"></block>
-            </value>
-            <value name="right_side">
-              <block type="num"></block>
-            </value>
-          </block>
-        </value>
-        <value name="do">
-          <block type="increment_operator">
-            <value name="arg_name">
-              <block type="num"></block>
-            </value>
-          </block>
-        </value>
-      </block>
-      <block type="loop_if_break"></block>
-    </category>
-    <!--ここまで-->
+      <!--配列-->
+      <category name="配列" colour="25">
+        <block type="arrangement">
+          <value name="element">
+            <block type="arrangement_element"></block>
+          </value>
+        </block>
+        <block type="arrangement_element"></block>
+        <block type="arrangement_element_print"></block>
+        <block type="arrangement_name"></block>
+      </category>
+      <!--ここまで-->
 
-    <!--計算-->
-    <category name="計算" colour="100">
-      <block type="add"></block>
-      <block type="num2_statement"></block>
-    </category>
-    <!--ここまで-->
+      <!--繰り返し-->
+      <category name="繰り返し" colour="150">
+        <block type="loop"></block>
+        <block type="condition_loop">
+          <value name="arg">
+            <block type="arg"></block>
+          </value>
+          <value name="if_conditions">
+            <block type="arg_compare">
+              <value name="left_side">
+                <block type="num"></block>
+              </value>
+              <value name="right_side">
+                <block type="num"></block>
+              </value>
+            </block>
+          </value>
+          <value name="do">
+            <block type="increment_operator">
+              <value name="arg_name">
+                <block type="num"></block>
+              </value>
+            </block>
+          </value>
+        </block>
+        <block type="loop_if_break"></block>
+      </category>
+      <!--ここまで-->
 
-    <!--分岐-->
-    <category name="分岐" colour="150">
-      <block type="if_else"></block>
-      <block type="arg_compare"></block>
-    </category>
-    <!--ここまで-->
+      <!--計算-->
+      <category name="計算" colour="100">
+        <block type="add"></block>
+        <block type="num2_statement"></block>
+      </category>
+      <!--ここまで-->
 
-    
-    <category name="変数" colour="300" custom="VARIABLE"></category>
-    <!-- <category name="関数定義" colour="330" custom="NUMBER_VARIABLE"></category> -->
-    <!-- <category name="関数定義" colour="330">
+      <!--分岐-->
+      <category name="分岐" colour="150">
+        <block type="if_else"></block>
+        <block type="arg_compare"></block>
+      </category>
+      <!--ここまで-->
+
+
+      <category name="変数" colour="300" custom="VARIABLE"></category>
+      <!-- <category name="関数定義" colour="330" custom="NUMBER_VARIABLE"></category> -->
+      <!-- <category name="関数定義" colour="330">
       <block type="variables_set_number"></block>
       <block type="variables_get_number"></block>
       <block type="variables_get_number2"></block>
     </category> -->
 
-    <!--関数呼び出し-->
-    <category name="関数呼び出し" colour="250">
-      <block type="call_def_func2">
-        <value name="call">
-          <block type="call_func_andarg2">
-            <value name="arg">
-              <block type="arg">
-                <value name="arg_elem">
-                  <block type="num">
-                  </block>
-                </value>
-              </block>
-            </value>
-            <value name="arg">
-              <block type="arg">
-                <value name="arg_elem">
-                  <block type="num">
-                  </block>
-                </value>
-              </block>
-            </value>
-          </block>
-        </value>
-      </block>
-      <block type="num2"></block>
-      <block type="arg"></block>
-      <block type="sample_arg2"></block>
-      <block type="return"></block>
-      <block type="list_variable"></block>
-    </category>
-    <!--ここまで-->
+      <!--関数呼び出し-->
+      <category name="関数呼び出し" colour="250">
+        <block type="call_def_func2">
+          <value name="call">
+            <block type="call_func_andarg2">
+              <value name="arg">
+                <block type="arg">
+                  <value name="arg_elem">
+                    <block type="num">
+                    </block>
+                  </value>
+                </block>
+              </value>
+              <value name="arg">
+                <block type="arg">
+                  <value name="arg_elem">
+                    <block type="num">
+                    </block>
+                  </value>
+                </block>
+              </value>
+            </block>
+          </value>
+        </block>
+        <block type="num2"></block>
+        <block type="arg"></block>
+        <block type="sample_arg2"></block>
+        <block type="return"></block>
+        <block type="list_variable"></block>
+      </category>
+      <!--ここまで-->
 
-    <!--その他-->
-    <category name="その他" colour="350">
-      <block type="text"></block>
-      <block type="calc"></block>
-      <block type="controls_if"></block>
-      <block type="controls_if_else"></block>
-      <block type="controls_if2"></block>
-      <block type="controls_if3"></block>
-    </category>
-    <!--ここまで-->
+      <!--その他-->
+      <category name="その他" colour="350">
+        <block type="text"></block>
+        <block type="calc"></block>
+        <block type="controls_if"></block>
+        <block type="controls_if_else"></block>
+        <block type="controls_if2"></block>
+        <block type="controls_if3"></block>
+      </category>
+      <!--ここまで-->
 
-  </xml><!--main定義エリアここまで-->
+    </xml>
+    <!--main定義エリアここまで-->
 
-  <!--関数定義エリアここから-->
-  <xml id="toolbox_function" style="display: none">
-    <!--標準-->
-    <category name="標準" colour="0">
-      <block type="string"></block>
-      <block type="num"></block>
-      <block type="num2"></block>
-      <block type="num_statement"></block>
-      <block type="print"></block>
-      <block type="operator"></block> 
-    </category><!--ここまで-->
+    <!--関数定義エリアここから-->
+    <xml id="toolbox_function" style="display: none">
+      <!--標準-->
+      <category name="標準" colour="0">
+        <block type="string"></block>
+        <block type="num"></block>
+        <block type="num2"></block>
+        <block type="num_statement"></block>
+        <block type="print"></block>
+        <block type="operator"></block>
+      </category>
+      <!--ここまで-->
 
-    <!--分岐-->
-    <category name="分岐" colour="150">
-      <block type="if_else"></block>
-      <block type="arg_compare"></block>
-    </category>
-    <!--ここまで-->
+      <!--分岐-->
+      <category name="分岐" colour="150">
+        <block type="if_else"></block>
+        <block type="arg_compare"></block>
+      </category>
+      <!--ここまで-->
 
-    <!--リスト-->
-    <category name="リスト" colour="15">
-      <block type="add_headlist_node">
-        <value name="node">
-          <block type="list_element"></block>
-        </value>
-      </block>
+      <!--リスト-->
+      <category name="リスト" colour="15">
+        <block type="add_headlist_node">
+          <value name="node">
+            <block type="list_element"></block>
+          </value>
+        </block>
 
-      <block type="get_list_headnode"></block>
-      <block type="get_list_Second_and_subsequent"></block>
-      <block type="list_null_check"></block>
-      <block type="list_print"></block>
-      <block type="list_variable"></block>
-    </category><!--ここまで-->
+        <block type="get_list_headnode"></block>
+        <block type="get_list_Second_and_subsequent"></block>
+        <block type="list_null_check"></block>
+        <block type="list_print"></block>
+        <block type="list_variable"></block>
+      </category>
+      <!--ここまで-->
 
-    <!--計算-->
-    <category name="計算" colour="100">
-      <block type="add"></block>
-      <block type="num2_statement"></block>
-    </category><!--ここまで-->
+      <!--計算-->
+      <category name="計算" colour="100">
+        <block type="add"></block>
+        <block type="num2_statement"></block>
+      </category>
+      <!--ここまで-->
 
-    <!--組み立て済み-->
-    <category name="組み立て済み" colour="50">
-      <!-- reduce ここから -->
-      <block type="def_func">
-        <value name="define">
-          <block type="call_def_func">
-            <value name="call">
-              <block type="call_func_andarg">
-                <value name="arg">
-                  <block type="arg">
-                    <value name="arg_elem">
-                      <block type="num">
-                      </block>
-                    </value>
-                  </block>
-                </value>
-                <value name="arg">
-                  <block type="arg">
-                    <value name="arg_elem">
-                      <block type="num">
-                      </block>
-                    </value>
-                  </block>
-                </value>
-              </block>
-            </value>
-            <value name="return">
-              <block type="num2">
-              </block>
-            </value>
-          </block>
-        </value>
-        <value name="do">
-          <block type="if_else">
-            <value name="if_conditions">
-              <block type="list_null_check"></block>
-            </value>
-            <value name="if">
-              <block type="return"></block>
-            </value>
-            <value name="else">
-              <block type="get_list_headnode"></block>
-            </value>
-          </block>
-        </value>
-      </block>
-      <!-- reduce ここまで -->
-      <block type="call_def_func2">
-        <value name="call">
-          <block type="call_func_andarg2">
-            <value name="arg">
-              <block type="arg">
-                <value name="arg_elem">
-                  <block type="num">
-                  </block>
-                </value>
-              </block>
-            </value>
-            <value name="arg">
-              <block type="arg">
-                <value name="arg_elem">
-                  <block type="num">
-                  </block>
-                </value>
-              </block>
-            </value>
-          </block>
-        </value>
-        <value name="return">
-          <block type="num2">
-          </block>
-        </value>
-      </block>
-    </category><!--ここまで-->
+      <!--組み立て済み-->
+      <category name="組み立て済み" colour="50">
+        <!-- reduce ここから -->
+        <block type="def_func">
+          <value name="define">
+            <block type="call_def_func">
+              <value name="call">
+                <block type="call_func_andarg">
+                  <value name="arg">
+                    <block type="arg">
+                      <value name="arg_elem">
+                        <block type="num">
+                        </block>
+                      </value>
+                    </block>
+                  </value>
+                  <value name="arg">
+                    <block type="arg">
+                      <value name="arg_elem">
+                        <block type="num">
+                        </block>
+                      </value>
+                    </block>
+                  </value>
+                </block>
+              </value>
+              <value name="return">
+                <block type="num2">
+                </block>
+              </value>
+            </block>
+          </value>
+          <value name="do">
+            <block type="if_else">
+              <value name="if_conditions">
+                <block type="list_null_check"></block>
+              </value>
+              <value name="if">
+                <block type="return"></block>
+              </value>
+              <value name="else">
+                <block type="get_list_headnode"></block>
+              </value>
+            </block>
+          </value>
+        </block>
+        <!-- reduce ここまで -->
+        <block type="call_def_func2">
+          <value name="call">
+            <block type="call_func_andarg2">
+              <value name="arg">
+                <block type="arg">
+                  <value name="arg_elem">
+                    <block type="num">
+                    </block>
+                  </value>
+                </block>
+              </value>
+              <value name="arg">
+                <block type="arg">
+                  <value name="arg_elem">
+                    <block type="num">
+                    </block>
+                  </value>
+                </block>
+              </value>
+            </block>
+          </value>
+          <value name="return">
+            <block type="num2">
+            </block>
+          </value>
+        </block>
+      </category>
+      <!--ここまで-->
 
-    <!--関数定義-->
-    <category name="関数定義" colour="200">
-      <!-- <block type="call_func"></block>
+      <!--関数定義-->
+      <category name="関数定義" colour="200">
+        <!-- <block type="call_func"></block>
       <block type="Recursive_call"></block> -->
-      <!-- <block type="Recursive_func"></block>
+        <!-- <block type="Recursive_func"></block>
       <block type="variables_set_number"></block> -->
-      <block type="def_func"></block>
-      <block type="call_def_func"></block>
-      <block type="call_func_andarg"></block>
-      <block type="arg"></block>
-      <block type="num2"></block>
-      <block type="return"></block>
-    </category><!--ここまで-->
+        <block type="def_func"></block>
+        <block type="call_def_func"></block>
+        <block type="call_func_andarg"></block>
+        <block type="arg"></block>
+        <block type="num2"></block>
+        <block type="return"></block>
+      </category>
+      <!--ここまで-->
 
-    <!--関数呼び出し-->
-    <category name="関数呼び出し" colour="250">
-      <block type="call_def_func2">
-        <value name="call">
-          <block type="call_func_andarg2">
-            <value name="arg">
-              <block type="arg">
-                <value name="arg_elem">
-                  <block type="num">
-                  </block>
-                </value>
-              </block>
-            </value>
-            <value name="arg">
-              <block type="arg">
-                <value name="arg_elem">
-                  <block type="num">
-                  </block>
-                </value>
-              </block>
-            </value>
-          </block>
-        </value>
-      </block>
-      <block type="num2"></block>
-      <block type="arg"></block>
-      <block type="sample_arg2"></block>
-      <block type="return"></block>
-      <block type="list_variable"></block>
-    </category><!--ここまで-->
+      <!--関数呼び出し-->
+      <category name="関数呼び出し" colour="250">
+        <block type="call_def_func2">
+          <value name="call">
+            <block type="call_func_andarg2">
+              <value name="arg">
+                <block type="arg">
+                  <value name="arg_elem">
+                    <block type="num">
+                    </block>
+                  </value>
+                </block>
+              </value>
+              <value name="arg">
+                <block type="arg">
+                  <value name="arg_elem">
+                    <block type="num">
+                    </block>
+                  </value>
+                </block>
+              </value>
+            </block>
+          </value>
+        </block>
+        <block type="num2"></block>
+        <block type="arg"></block>
+        <block type="sample_arg2"></block>
+        <block type="return"></block>
+        <block type="list_variable"></block>
+      </category>
+      <!--ここまで-->
 
-    <!--変数-->
-    <category name="変数" colour="300" custom="VARIABLE"></category>
+      <!--変数-->
+      <category name="変数" colour="300" custom="VARIABLE"></category>
 
-  </xml><!--関数定義エリアここまで-->
+    </xml>
+    <!--関数定義エリアここまで-->
   </div>
 
   <div id="code_area">
-    <!-- <div class="js_area">
-      <h1>JavaScript</h1>
-      <pre id='jsCode'>
-
-      </pre>
-    </div> -->
     <div class="hat_area">
       <h1>Hatコード</h1>
       <textarea class="outputcode" id="HatCode"></textarea>
@@ -391,17 +408,22 @@
       <h1>Hat出力エリア</h1>
       <textarea style="font-size:24px;" class="outputcode" id="terminal"></textarea>
     </div>
+    <div class="js_area">
+      <h1>JSコード</h1>
+      <textarea class="outputcode" id="JSCode"></textarea>
+    </div>
   </div>
 
   <!--全消去初期化-->
   <xml id="clearBlocks" style="display: none"></xml>
-<!-- ボタン -->
+
+  <!-- ボタン -->
   <div id="btn_area">
     <button id="showCode">ソースコードを表示する</button>
     <button id="runCode">コードを実行する</button>
-    <button onclick="saveBlocks()"    id="saveButton"   >保存</button>
+    <button onclick="saveBlocks()" id="saveButton">保存</button>
     <button onclick="restoreBlocks()" id="restoreButton">復元</button> &nbsp;&nbsp;
-    <button onclick="clearBlocks()"   id="clearButton"  >全消去</button>
+    <button onclick="clearBlocks()" id="clearButton">全消去</button>
   </div>
 
   <div id="restoreModal" class="modal" onclick="pressCancelRestoreBlocks(event)">
@@ -473,7 +495,7 @@
 
 
 
-  <main>
+  <div id="othello_area">
     <!--<div id="modal">
         <h2>オセロ</h2>
             <p>マスの数を選択してください</p>
@@ -486,18 +508,18 @@
     <div id="restartBtn" class="hide">クリックするとスタート画面に戻ります</div>
     <div id="content">
 
-        <table id="board"></table>
+      <table id="board"></table>
     </div>
     <div id="counter" class="hide">
-        <div id="numBlack"></div>
-        <h2></h2>
-        <div id="numWhite"></div>
+      <div id="numBlack"></div>
+      <h2></h2>
+      <div id="numWhite"></div>
     </div>
-    <button onclick="boardnum(4)"    id="boardn"   >4*4</button>
-    <button onclick="boardnum(6)"    id="boardn"   >6*6</button>
-    <button onclick="boardnum(8)"    id="boardn"   >8*8</button>
+    <button onclick="boardnum(4)" id="boardn">4*4</button>
+    <button onclick="boardnum(6)" id="boardn">6*6</button>
+    <button onclick="boardnum(8)" id="boardn">8*8</button>
     <button id="test">テスト</button>
-</main>
+  </div>
 </body>
 
 </html>
@@ -514,9 +536,17 @@
 
 <!-- 出力と実行 -->
 <script src="taterm.js"></script>
-<script src="index.js"></script>
 <script src="sexpr-plus.js"></script>
 <script src="hat.js"></script>
+
+<!-- 出力と実行(Hat) -->
+<!-- <script src="assets/js/blockly_hat.js"></script> -->
+
+<!-- 出力と実行(JS) -->
+<script src="assets/js/blockly_javascript.js"></script>
+
+<!-- JavaScriptのブロックを定義したサンプルファイル -->
+<script src="block_def/javascript_function.js"></script>
 
 <!--オセロ-->
 <script src="othello.js"></script>
